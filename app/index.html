@@ -1,0 +1,143 @@
+<html>
+<head>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="includes/css/coinimal.css" />
+</head>
+<body>
+<div class="container-fluid coinimal">
+    
+    <h1>BITPANDA <small id="coinimalFoundUserEmail"></small></h1>
+        
+    <div class="row" id="coinimalDivFindingUser">
+        <div class="col-sm-6 col-sm-offset-3">
+            <p class="alert alert-info" style="margin-top: 100px; text-align: center;">Fetching connected BITPANDA Account...</p>
+        </div>
+    </div>
+
+    <div class="row" id="coinimalDivRegisterUser" style="display: none;">
+        <div class="col-sm-6 col-sm-offset-3">
+            <p class="lead">
+                There is no BITPANDA User Account connected to this NXT Account! You need to register an Account at BITPANDA and connect it with your NXT Account to use our service.
+            </p>
+            <div class="row">
+                <div class="col-sm-6"><a href="https://www.bitpanda.com/users/register" class="btn btn-primary btn-block" target="_blank">1. Please create your BITPANDA Account now!</a></div>
+                <div class="col-sm-6"><a href="https://www.bitpanda.com/users/settings" class="btn btn-default btn-block" target="_blank">2. Login to your BITPANDA Account and connect it with your NXT Account under "Settings"!</a></div>
+            </div>
+            <hr />
+            <p>After registration use this token to connect your NXT account! Paste it here: <a href="https://www.bitpanda.com/users/settings" target="_blank">https://www.bitpanda.com/users/settings</a> (This token is only valid for some short time. If the token expired please Logout and Login to get a new token.)</p>
+            <form><textarea id="coinimalTokenTextarea" class="form-control"></textarea></form>
+            <hr />
+
+            <a href="#" id="btnCoinimalRefreshInit" class="btn btn-default btn-block">3. Refresh - Check connection after you linked your account successfully.</a>
+        </div>
+    </div>
+
+    <div class="row" id="coinimalDivUI" style="display: none;">
+        <div class="col-sm-6">
+
+            <div class="well" id="divCoinimalOrderInputs" style="margin-bottom: 20px;">
+                <h4>Buy NXT from BITPANDA with EUR</h4>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">EUR</span>
+                                <input type="text" id="CoinimalTradeAmountFiat" value="100" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-4" style="line-height: 30px; text-align: center;">
+                        pay with
+                    </div>
+                    <div class="col-md-6 col-xs-8">
+                        <div class="form-group">
+                            <select id="CoinimalTradePaymentProviderId" class="form-control" style="width: 100%;">
+                                <option value="0">Loading...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="btn btn-primary btn-block" id="btnCoinimalOrderSummary" data-pid="0">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    Show order summary and final price
+                </a>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="divCoinimalTradingEnabled" data-price="0" class="alert alert-info">
+                        Current price of one NXT is <span class="coinimalCryptocoinPrice"></span> EUR.
+                        You want to buy NXTs for <span id="coinimalAmountOfFiat">---</span> EUR so you will get <span id="coinimalYouGetCryptocoin">---</span> NXT!
+                    </div>
+
+                    <div id="divCoinimalTradingDisabled" class="alert alert-danger" style="display: none;">
+                        We are very sorry, but buying is disabled right now. Please come back later!
+                    </div>
+                </div>
+            </div>
+
+            <div id="coinimalPriceChart" style="width: 100%; height: 300px; margin-top: 30px;"></div>
+
+            <hr />
+            <p class="alert alert-warning">Want to buy Bitcoin or other Cryptocoins? Visit our website at <a href="https://www.bitpanda.com" target="_blank">https://www.bitpanda.com</a></p>
+        </div>
+        <div class="col-xs-6">
+
+            <div id="coinimalPaymentProviders">
+                Loading payment providers...
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="coinimalModalOrderSummary" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">BITPANDA Order Summary</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="divCoinimalOrderSummary"></div>
+
+                    <div class="row" id="divCoinimalTradeButtons" style="display: none;">
+                        <div class="col-xs-6">
+                            <a class="btn btn-default btn-block" id="btnCoinimalRefreshRate">
+                                <span class="glyphicon glyphicon-refresh"></span> Get new rate
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="btn btn-primary btn-block" id="btnCoinimalOrderNow">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Buy now <span id="coinimalInfoPriceTimeLocked">---</span> sec left...
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- build:js app.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/iframe-resizer/src/iframeResizer.js"></script>
+<script src="bower_components/iframe-resizer/src/iframeResizer.contentWindow.js"></script>
+<!-- endbower -->
+
+<script src="includes/js/d3.min.js"></script>
+<script src="includes/js/jquery.number.min.js"></script>
+
+<script src="includes/mynxt/MyNXT.js"></script> 
+<script src="app.js"></script>
+<!-- endbuild -->
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "bitpanda-mynxt-plugin",
+  "version": "1.0.0",
+  "description": "Bitpanda Integration",
+  "main": "Gruntfile.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-cssmin": "^0.11.0",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-filerev": "^2.1.2",
+    "grunt-usemin": "^3.0.0",
+    "grunt-wiredep": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "coinimal",
+	"mynxt",
+	"BitPanda"
+  ],
+  "author": "Christian Trummer",
+  "license": "MIT"
+}

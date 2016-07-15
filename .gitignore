@@ -1,0 +1,7 @@
+node_modules/
+.idea
+.tmp
+app/bower_components/
+app/includes/tokenjs/
+config.js
+CoinimalMyNXT.komodoproject

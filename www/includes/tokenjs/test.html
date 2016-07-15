@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Token JS</title>
+<script src="jsbn.js"></script>
+<script src="jsbn2.js"></script>
+<script src="converters.js"></script> 
+<script src="curve25519.js"></script>
+<script src="jssha256.js"></script>
+<script src="token.js"></script>
+<script>
+var token = generateToken("this", "that");
+
+var ver = parseToken(token, "this");
+
+document.write(" token : " + token + "<br/> Passphrase: 'that' <br/> Data/website: 'this' <br/> verified: "+ver.isValid+"<br/> timestamp: "+ver.timestamp+"<br/> public key: "+ver.publicKey);
+</script>
+</head>
+<body>
+</body>
+</html> 
