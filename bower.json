@@ -1,0 +1,26 @@
+{
+  "version": "0.1",
+  "authors": [
+    "Christian Trummer <christian@coinimal.com>"
+  ],
+  "description": "Coinimal Integration",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+  ],
+  "license": "MIT",
+  "homepage": "https://www.bitpanda.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.1",
+    "iframe-resizer": "~2.7.1"
+  }
+}
