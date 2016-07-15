@@ -1,4 +1,5 @@
 {
+  "name": "bitpanda-mynxt-plugin",
   "version": "0.1",
   "authors": [
     "Christian Trummer <christian@coinimal.com>"
@@ -8,6 +9,7 @@
     "globals"
   ],
   "keywords": [
+    "bitpanda"
   ],
   "license": "MIT",
   "homepage": "https://www.bitpanda.com",
