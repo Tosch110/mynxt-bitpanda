@@ -4,7 +4,7 @@
   "authors": [
     "Christian Trummer <christian@coinimal.com>"
   ],
-  "description": "Coinimal Integration",
+  "description": "Bitpanda MyNXT Plugin - Buy and Sell Nxt or Ardor with Bitpanda in your MyNxt Wallet.",
   "moduleType": [
     "globals"
   ],
